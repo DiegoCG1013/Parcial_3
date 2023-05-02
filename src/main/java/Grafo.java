@@ -63,6 +63,19 @@ public class Grafo {
 
 
     public static void main(String[] args) {
+        Grafo graph = new Grafo(5);
+        graph.addEdge(0, 1, 4);
+        graph.addEdge(0, 2, 1);
+        graph.addEdge(2, 1, 2);
+        graph.addEdge(1, 3, 1);
+        graph.addEdge(2, 3, 5);
+        graph.addEdge(3, 4, 3);
 
+        int[] distances = graph.dijkstra(0);
+
+        System.out.println("Distancias más cortas desde el nodo 0:");
+        for (int i = 0; i < distances.length; i++) {
+            System.out.println("Nodo " + i + ": " + distances[i]);
+        }
     }
 }
