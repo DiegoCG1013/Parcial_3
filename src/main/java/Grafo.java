@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Grafo {
 
     private int[][] adjacencyMatrix;
@@ -28,6 +30,36 @@ public class Grafo {
         return adjacencyMatrix[i][j];
     }
 
+    public int[] dijkstra (int inicio) {
+        int[] distancias = new int[numVertices];
+        boolean[] visitados = new boolean[numVertices];
+
+        Arrays.fill(visitados, false);
+        visitados[inicio] = true;
+
+        Arrays.fill(distancias, Integer.MAX_VALUE);
+        distancias[inicio] = 0;
+
+        for (int i = 0; i < numVertices - 1; i++){
+            int caminoCorto = Integer.MAX_VALUE;
+            int indexCorto = -1;
+
+            for(int j = 0; j < numVertices; j++){
+                if(hasEdge(inicio, j) && !visitados[j] && distancias[j] <= caminoCorto){
+                    caminoCorto = distancias[j];
+                    indexCorto = j;
+                }
+            }
+            visitados[indexCorto] = true;
+
+            for (int j = 0; j < numVertices; j++){
+                if(hasEdge(indexCorto, j) && !visitados[j] && distancias[indexCorto] != Integer.MAX_VALUE && distancias[indexCorto] + getWeight(indexCorto, j) < distancias[j]){
+                    distancias[j] = distancias[indexCorto] + getWeight(indexCorto, j);
+                }
+            }
+        }
+        return distancias;
+    }
 
 
     public static void main(String[] args) {
