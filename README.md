@@ -25,4 +25,4 @@ de manera que sabemos la distancia entre cualesquiera nodos
 * c) Esto supongo que va incluido con lo anterior, suponiendo que el puerto Madero es el nodo 0 y el de rodas es el 1, para encontrar la distancia entre ambos basta con 
 sacar la tabla distancias por ejemplo de el puerto madero y la distancia seria la posicion 1 del array.
 
-* d) 
+* d) He hecho un main donde he intentado hacer eso.
